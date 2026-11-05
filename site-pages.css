@@ -12,3 +12,25 @@
 .card-link{color:#C8462F}
 :where(a,button,input,summary):focus-visible{outline:2px solid #fff;outline-offset:2px;box-shadow:0 0 0 4px #2B1915}
 .bullet-list + .btn,.bullet-list + .card-link{margin-top:24px}
+
+/* Partner enquiry form: page-specific layout built on the shared site field and button system */
+.partner-audience-tags{justify-content:center;margin-top:28px}
+.partner-conference-cards .card{display:flex;flex-direction:column;align-items:flex-start}
+.partner-conference-cards .card h3{font-size:28px;margin:10px 0}
+.partner-conference-cards .card .bullet-list{margin-top:20px;font-size:14px}
+.partner-conference-cards .card .card-link{margin-top:auto;padding-top:24px}
+.partner-request{max-width:920px;margin:0 auto;padding:clamp(24px,4vw,42px);border:1px solid var(--page-line);border-radius:8px;background:#fff}
+.partner-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 20px}
+.partner-field{min-width:0}
+.partner-field label{display:block;margin-bottom:7px;font-size:14px;font-weight:700}
+.partner-field input,.partner-field select,.partner-field textarea{display:block;width:100%;min-height:48px;padding:11px 13px;border:1px solid var(--page-line);border-radius:4px;background:#fff;color:var(--page-ink);font:inherit;font-size:15px}
+.partner-field textarea{min-height:128px;resize:vertical}
+.partner-field input::placeholder,.partner-field textarea::placeholder{color:#81766E}
+.partner-field input:focus-visible,.partner-field select:focus-visible,.partner-field textarea:focus-visible{outline:2px solid var(--page-accent);outline-offset:2px}
+.partner-field-wide{grid-column:1/-1}
+.partner-form-submit{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:2px}
+.partner-form-submit span{max-width:48ch;color:var(--page-muted);font-size:13px}
+@media(max-width:680px){.partner-form{grid-template-columns:1fr;gap:16px}.partner-field-wide{grid-column:auto}.partner-form-submit{align-items:flex-start;flex-direction:column}.partner-form-submit .btn{width:100%}}
+
+.partner-email-fallback{margin-top:18px;color:var(--page-muted);font-size:14px}
+.partner-email-fallback a{color:var(--page-accent);font-weight:700;text-decoration:underline;text-underline-offset:3px}

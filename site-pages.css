@@ -34,3 +34,7 @@
 
 .partner-email-fallback{margin-top:18px;color:var(--page-muted);font-size:14px}
 .partner-email-fallback a{color:var(--page-accent);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+/* Keep two conference offers balanced; match the homepage's equal-width stacked mobile CTAs. */
+.partner-conference-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:680px){.partner-conference-cards{grid-template-columns:1fr}.hero-actions{display:grid;grid-template-columns:1fr;width:100%;max-width:340px;margin:30px auto 0}.hero-actions .btn{width:100%;font-weight:700}}
+

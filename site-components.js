@@ -40,7 +40,12 @@ customElements.define('tribe-site-nav', TribeSiteNav);
 
 class TribeCommunityStats extends HTMLElement {
   connectedCallback() {
-    this.innerHTML = `<div class="stats" aria-label="The Test Tribe community"><div><b>180,000+</b><span>Members</span></div><div><b>130+</b><span>Countries</span></div><div><b>43</b><span>City chapters</span></div><div><b>1,200+</b><span>Events run</span></div></div>`;
+    const sets = {
+      community: { label: 'The Test Tribe community', stats: [['180,000+', 'Members'], ['130+', 'Countries'], ['43', 'City chapters'], ['1,200+', 'Events run']] },
+      teams: { label: 'Corporate training reach', stats: [['50+', 'Teams trained'], ['130+', 'Countries reached'], ['170K+', 'Community members']] }
+    };
+    const set = sets[this.getAttribute('variant')] || sets.community;
+    this.innerHTML = `<div class="stats" aria-label="${set.label}">${set.stats.map(([value, label]) => `<div><b>${value}</b><span>${label}</span></div>`).join('')}</div>`;
   }
 }
 customElements.define('tribe-community-stats', TribeCommunityStats);

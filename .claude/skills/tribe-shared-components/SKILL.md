@@ -42,12 +42,12 @@ Never hand-write the nav, drawer or footer. They live in `site-components.js`.
 | `<tribe-site-nav>` | Global nav, floating on scroll, mobile drawer. Add `home` on the homepage, `variant="teams"` on the Teams page (anchor links plus a discovery-call CTA). |
 | `<tribe-site-footer>` | Newsletter, link columns, wordmark, policies. `variant="teams"` swaps in team newsletter copy and quick links. |
 | `<tribe-journeys current="teams">` | Cards linking to the other audience journeys, leaving out the current one. |
-| `<tribe-community-stats>` | 180,000+ members / 130+ countries / 43 chapters / 1,200+ events. |
+| `<tribe-community-stats [variant="teams"]>` | Community numbers; `variant="teams"` shows the three corporate-training numbers in the same layout. |
 | `<tribe-page-faq page="teams">` | FAQ accordion. Content comes from `pageFaqContent[page]`. |
 | `<tribe-upcoming-events limit="3" compact>` | Event cards. |
 | `<tribe-chapter-card>` | Chapter call-out card. |
 | `<tribe-research-reports [compact]>` and `<tribe-report-cover>` | Research banners and covers. |
-| `<tribe-trusted-logos>` (`shared-trusted-logos.js`) | Scrolling partner logo marquee. |
+| `<tribe-trusted-logos [variant="clients"]>` (`shared-trusted-logos.js`) | Scrolling logo section with heading and note. Default is member companies; `variant="clients"` is the corporate-training client set. |
 
 ## Shared building blocks (`site-pages.css`)
 

@@ -62,14 +62,6 @@ tribe-chapter-card{min-width:0}
 @media(max-width:680px){.leader-community-grid,.leader-contribution-grid,.leader-pair-cards{grid-template-columns:1fr}.leader-finer-card{padding:26px}}
 
 /* Corporate training proof and portfolio details */
-.teams-proof{padding-top:44px;padding-bottom:54px;background:#fff}
-.teams-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));max-width:860px;margin:0 auto 42px;text-align:center}
-.teams-stats>div{padding:8px 20px;border-right:1px solid var(--page-line)}
-.teams-stats>div:last-child{border-right:0}
-.teams-stats b{display:block;font-size:clamp(28px,3.2vw,42px);line-height:1.05;letter-spacing:-.045em}
-.teams-stats span{display:block;margin-top:8px;color:var(--page-muted);font-size:14px}
-.teams-clients{padding-top:25px;border-top:1px solid var(--page-line);text-align:center}
-.teams-clients>.eyebrow{margin-bottom:18px}
 .teams-topics{justify-content:center;margin-top:22px}
 .teams-programme-note{margin:14px auto 0;max-width:66ch;font-size:14px!important}
 .teams-outcome h3{font-size:clamp(38px,5vw,60px);letter-spacing:-.055em}
@@ -83,12 +75,7 @@ tribe-chapter-card{min-width:0}
 .teams-continuous>.pills{align-content:center;justify-content:flex-start}
 .teams-continuous .btn{margin-top:8px}
 @media(max-width:900px){.teams-testimonials{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:680px){.teams-stats{grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:32px}.teams-stats>div{padding:8px 6px}.teams-stats span{font-size:12px}.teams-testimonials{grid-template-columns:1fr}}
-.teams-client-marquee{margin:0 -8px}
-.teams-client-marquee .trusted-track{animation-duration:48s}
-.teams-client-marquee .trusted-logo{flex-basis:140px}
-.teams-client-marquee .trusted-logo img{max-width:140px;max-height:38px}
-@media(prefers-reduced-motion:reduce){.teams-client-marquee{overflow-x:auto}}
+@media(max-width:680px){.teams-testimonials{grid-template-columns:1fr}}
 
 /* Shared journey cards (tribe-journeys) and Teams footer variant */
 tribe-journeys{display:block}

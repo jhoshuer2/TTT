@@ -2,12 +2,12 @@
 .shared-trusted .section-heading{margin:0 auto 28px;text-align:center}
 .shared-trusted .section-heading h2{font-size:clamp(25px,3vw,36px)}
 .trusted-marquee{display:flex;overflow:hidden;gap:0;width:100%;mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
-.trusted-track{display:flex;align-items:center;flex:0 0 auto;gap:clamp(30px,4vw,64px);width:max-content;list-style:none;margin:0;padding:14px 32px;animation:trusted-logo-scroll 100s linear infinite}
+.trusted-track{display:flex;align-items:center;flex:0 0 auto;gap:clamp(30px,4vw,64px);width:max-content;list-style:none;margin:0;padding:14px 32px;animation:trusted-logo-scroll var(--trusted-duration,100s) linear infinite}
 
 .trusted-logo{display:flex;align-items:center;justify-content:center;flex:0 0 128px;height:48px}
 .trusted-logo img{display:block;width:auto;height:auto;max-width:128px;max-height:34px;object-fit:contain;filter:grayscale(1);opacity:.66}
 .trusted-marquee:hover .trusted-track,.trusted-marquee:focus-within .trusted-track{animation-play-state:paused}
 .trusted-note{max-width:70ch;margin:14px auto 0;color:var(--page-muted,#6d655e);text-align:center;font-size:12px;line-height:1.6}
 @keyframes trusted-logo-scroll{from{transform:translateX(0)}to{transform:translateX(-100%)}}
-@media(max-width:680px){.shared-trusted{padding:42px 0}.trusted-track{gap:30px;padding:12px 20px;animation-duration:80s}.trusted-logo{flex-basis:108px;height:42px}.trusted-logo img{max-width:108px;max-height:28px}.trusted-note{padding:0 16px}}
+@media(max-width:680px){.shared-trusted{padding:42px 0}.trusted-track{gap:30px;padding:12px 20px;animation-duration:calc(var(--trusted-duration,100s)*.8)}.trusted-logo{flex-basis:108px;height:42px}.trusted-logo img{max-width:108px;max-height:28px}.trusted-note{padding:0 16px}}
 @media(prefers-reduced-motion:reduce){.trusted-marquee{overflow-x:auto;scrollbar-width:thin;mask-image:none;-webkit-mask-image:none}.trusted-track{animation:none}.trusted-track-copy{display:none}}

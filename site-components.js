@@ -221,3 +221,24 @@ class TribeReportCover extends HTMLElement {
   }
 }
 customElements.define('tribe-report-cover', TribeReportCover);
+class TribeResearchReports extends HTMLElement {
+  connectedCallback() {
+    this.innerHTML = `
+      <section class="research${this.hasAttribute('compact') ? ' report-embed' : ''}" aria-label="Featured research reports">
+        <div class="wrap">
+          <div class="report-pair">
+            <article class="report-feature report-latest">
+              <div class="report-copy"><div class="eyebrow">Latest report · 2026</div><p class="report-kicker">People behind the practice</p><p class="report-description">A closer look at the people building quality across the world, and what their experiences tell us about software testing.</p><a class="btn btn-o btn-s" href="research.html#reports">Read the report <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+              <tribe-report-cover title="Software testing salary survey" label="The Test Tribe · Research" meta="Annual report · 2026" variant="survey"></tribe-report-cover>
+            </article>
+            <article class="report-feature report-ai">
+              <div class="report-copy"><div class="eyebrow">AI in Action · 2026</div><p class="report-kicker">How testing teams are using AI today</p><p class="report-description">Explore where AI is helping teams move faster, and where trust still needs to be earned.</p><a class="btn btn-w btn-s" href="research.html#reports">Explore the report <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path class="ico-line" d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+              <tribe-report-cover title="AI in testing" label="The Test Tribe · Research" meta="AI in Action · 2026" variant="ai"></tribe-report-cover>
+            </article>
+          </div>
+          <a class="report-index" href="research.html#reports">Explore all research <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>`;
+  }
+}
+customElements.define('tribe-research-reports', TribeResearchReports);

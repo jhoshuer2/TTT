@@ -132,3 +132,8 @@ tribe-report-cover{display:block;position:relative;min-width:0;aspect-ratio:.94;
 .nav.sc .nav-join{height:38px}
 @media(max-width:900px){tribe-site-nav{min-height:66px}.nav.sc{width:calc(100% - 24px);max-width:none}.nav.sc .wrap{padding:0 16px}.nav.sc .nav-in{height:58px}}
 @media(prefers-reduced-motion:reduce){.nav,.nav .nav-in,.nav .brand{transition:none!important}}
+
+/* Teams variants: nav fits five anchors plus a longer CTA; footer uses three link columns */
+.nav.sc .links{gap:20px}
+.ftop-teams{grid-template-columns:1.5fr repeat(3,1fr)}
+@media(max-width:900px){.ftop-teams{grid-template-columns:1fr 1fr}}

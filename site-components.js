@@ -3,22 +3,31 @@ class TribeSiteNav extends HTMLElement {
     const isHome = this.hasAttribute('home');
     const homeFile = 'the-test-tribe-home-5-illustrated.html';
     const href = (section) => isHome ? `#${section}` : `${homeFile}#${section}`;
-    const links = [
+    const teams = this.getAttribute('variant') === 'teams';
+    const links = teams ? [
+      ['Programmes', '#programmes'], ['How it works', '#how-it-works'], ['Trainers', '#trainers'],
+      ['Results', '#results'], ['FC for Business', '#fc-business']
+    ] : [
       ['Community', 'gates'], ['Experiences', 'events'], ['For teams', 'teams'],
       ['Learning', 'research'], ['About', 'top']
     ];
+    const linkHref = ([, section]) => teams ? section : section === 'teams' ? 'corporate-training.html' : href(section);
+    const linkList = links.map(link => `<a href="${linkHref(link)}">${link[0]}</a>`).join('');
+    const cta = teams
+      ? { label: 'Book a discovery call', href: '#contact', login: '' }
+      : { label: 'Join Tribe', href: href('join'), login: true };
     this.innerHTML = `
       <header class="nav" id="nav">
         <div class="wrap nav-in">
           <a class="logo" href="${href('top')}" aria-label="The Test Tribe home"><img class="brand" src="tribe-brand.png" width="84" height="40" alt="The Test Tribe"></a>
-          <nav class="links" aria-label="Main">${links.map(([label, section]) => `<a href="${section === 'teams' ? 'corporate-training.html' : href(section)}">${label}</a>`).join('')}</nav>
-          <div class="act"><a class="login" href="#">Login</a><a class="btn btn-v btn-s nav-join" href="${href('join')}">Join Tribe</a><button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><svg class="i-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg><svg class="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+          <nav class="links" aria-label="Main">${linkList}</nav>
+          <div class="act">${cta.login ? '<a class="login" href="#">Login</a>' : ''}<a class="btn btn-v btn-s nav-join" href="${cta.href}">${cta.label}</a><button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><svg class="i-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg><svg class="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
         </div>
       </header>
       <div class="scrim" id="scrim" hidden></div>
       <aside class="drawer" id="drawer" aria-label="Mobile navigation" aria-hidden="true" hidden>
-        <nav class="d-links">${links.map(([label, section]) => `<a href="${section === 'teams' ? 'corporate-training.html' : href(section)}">${label}</a>`).join('')}</nav>
-        <div class="d-act"><a class="btn btn-o" href="#">Login</a><a class="btn btn-primary" href="${href('join')}">Join Tribe</a></div>
+        <nav class="d-links">${linkList}</nav>
+        <div class="d-act">${cta.login ? '<a class="btn btn-o" href="#">Login</a>' : ''}<a class="btn btn-primary" href="${cta.href}">${cta.label}</a></div>
       </aside>`;
 
     const nav = this.querySelector('.nav');
@@ -72,6 +81,9 @@ const pageFaqContent = {
     ['Can we review trainer profiles before booking?', 'Yes. The Test Tribe shares relevant practitioner profiles once the programme scope is understood, so you can assess the experience that fits your team.'],
     ['How do we understand whether training worked?', 'Agree learning outcomes during scoping. Depending on the programme, teams can use pre- and post-training assessments and track how the skills are applied at work.'],
     ['Can our team continue learning after training?', 'Finer Circle for Business offers ongoing courses, AI and professional development masterclasses, mentoring and a learning community. <a href="https://www.thetesttribe.com/finer-circle-for-business/">Explore Finer Circle for Business ↗</a>'],
+    ['How does team size and duration work?', 'Programmes are scoped around your team’s size, roles and goals, so cohort size and duration vary. Share your team size and timeline on a discovery call and we’ll recommend a plan.'],
+    ['How do proposals and pricing work?', 'Pricing depends on programme scope, team size, delivery format and how much customisation you need. After a discovery call, you’ll receive a tailored proposal.'],
+    ['What is the difference between Corporate Training and Finer Circle for Business?', 'Corporate Training is a structured programme built around your team’s capability goals and led by practitioners. Finer Circle for Business is ongoing development, with on-demand courses, masterclasses, mentoring and community. You can start with training and keep learning through Finer Circle for Business.'],
     ['How do we get a proposal?', 'Book a discovery call with your team size, focus area and goals. The Test Tribe will help shape the curriculum, trainer fit and delivery plan. <a href="https://www.thetesttribe.com/corporate-training/#contact-form">Start a corporate training enquiry ↗</a>']
   ]
 };
@@ -117,11 +129,18 @@ customElements.define('tribe-upcoming-events', TribeUpcomingEvents);
 
 class TribeSiteFooter extends HTMLElement {
   connectedCallback() {
+    const teams = this.getAttribute('variant') === 'teams';
+    const copy = teams
+      ? { newsTitle: 'Team capability updates', newsText: 'Insights for L&amp;D and engineering leaders on building capable, AI-ready teams.' }
+      : { newsTitle: 'The Tribe Newsletter', newsText: 'The latest from your tribe, delivered straight to your inbox every two weeks.' };
+    const columns = teams
+      ? `<div><h4>Quick links</h4><ul><li><a href="#programmes">Programmes</a></li><li><a href="#fc-business">FC for Business</a></li><li><a href="#programmes">Training portfolio</a></li><li><a href="#contact">Book a discovery call</a></li></ul></div><div><h4>Other journeys</h4><ul><li><a href="testers.html">Testers</a></li><li><a href="leaders.html">Leaders</a></li><li><a href="partners.html">Partners</a></li></ul></div><div><h4>About</h4><ul><li><a href="${home}#top">Our Story</a></li><li><a href="#contact">Contact</a></li></ul></div>`
+      : `<div><h4>Community</h4><ul><li><a href="testers.html">Testers</a></li><li><a href="leaders.html">Leaders</a></li><li><a href="partners.html">Partners</a></li><li><a href="research.html">Researchers</a></li></ul></div><div><h4>Experiences</h4><ul><li><a href="events.html">TribeQonf</a></li><li><a href="events.html">Meetups</a></li><li><a href="events.html">Workshops</a></li></ul></div><div><h4>Learning</h4><ul><li><a href="#">Courses</a></li><li><a href="#">Live Cohorts</a></li><li><a href="leaders.html#join">Finer Circle</a></li><li><a href="corporate-training.html">Corporate Training</a></li></ul></div><div><h4>About</h4><ul><li><a href="${home}#top">Our Story</a></li><li><a href="#">Careers</a></li><li><a href="#">Press Release</a></li><li><a href="#">Contact</a></li></ul></div>`;
     this.innerHTML = `
       <footer class="foot"><div class="wrap">
-        <div class="news"><div><h3>The Tribe Newsletter</h3><p>The latest from your tribe, delivered straight to your inbox every two weeks.</p></div>
+        <div class="news"><div><h3>${copy.newsTitle}</h3><p>${copy.newsText}</p></div>
           <form class="nform" novalidate><label class="sr" for="nl">Email address</label><input id="nl" type="email" placeholder="you@company.com" required><button class="btn btn-v btn-s" type="submit">Subscribe</button><p class="nok" role="status"></p></form></div>
-        <div class="ftop"><div class="fabout"><a class="footer-logo" href="${home}"><img class="brand" src="tribe-brand-white.svg" alt="The Test Tribe" width="81" height="44"></a><p>A global community for everyone who builds software quality.</p><div class="soc"><a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 10.5V16M8 7.6v.1M11.5 16v-5.5M11.5 13c0-1.6 1-2.6 2.3-2.6S16 11.3 16 13v3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></a><a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="13" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10.5 9.5v5l4.2-2.5z" fill="currentColor"/></svg></a><a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></a><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="7" r="1" fill="currentColor"/></svg></a></div></div><div><h4>Community</h4><ul><li><a href="testers.html">Testers</a></li><li><a href="leaders.html">Leaders</a></li><li><a href="partners.html">Partners</a></li><li><a href="research.html">Researchers</a></li></ul></div><div><h4>Experiences</h4><ul><li><a href="events.html">TribeQonf</a></li><li><a href="events.html">Meetups</a></li><li><a href="events.html">Workshops</a></li></ul></div><div><h4>Learning</h4><ul><li><a href="#">Courses</a></li><li><a href="#">Live Cohorts</a></li><li><a href="leaders.html#join">Finer Circle</a></li><li><a href="corporate-training.html">Corporate Training</a></li></ul></div><div><h4>About</h4><ul><li><a href="${home}#top">Our Story</a></li><li><a href="#">Careers</a></li><li><a href="#">Press Release</a></li><li><a href="#">Contact</a></li></ul></div></div>
+        <div class="ftop${teams ? ' ftop-teams' : ''}"><div class="fabout"><a class="footer-logo" href="${home}"><img class="brand" src="tribe-brand-white.svg" alt="The Test Tribe" width="81" height="44"></a><p>A global community for everyone who builds software quality.</p><div class="soc"><a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 10.5V16M8 7.6v.1M11.5 16v-5.5M11.5 13c0-1.6 1-2.6 2.3-2.6S16 11.3 16 13v3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></a><a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="13" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10.5 9.5v5l4.2-2.5z" fill="currentColor"/></svg></a><a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></a><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="7" r="1" fill="currentColor"/></svg></a></div></div>${columns}</div>
         <div class="wm" aria-hidden="true">the test tribe</div>
         <div class="fbase"><span>© 2026 The Test Tribe. All rights reserved.</span><nav aria-label="Policies"><a href="#">Privacy Policy</a><a href="#">Terms of use</a><a href="#">Code of conduct</a></nav></div>
       </div></footer>`;
@@ -245,3 +264,20 @@ class TribeResearchReports extends HTMLElement {
   }
 }
 customElements.define('tribe-research-reports', TribeResearchReports);
+
+
+const tribeJourneys = {
+  testers: { label: 'Testers', href: 'testers.html', text: 'Learn, connect and grow with a community that understands your work.', icon: '<circle cx="24" cy="15" r="6" fill="#F6B7A3"/><path d="M10 40c0-9 6-15 14-15s14 6 14 15z" fill="#F4EAE4"/>' },
+  leaders: { label: 'Leaders', href: 'leaders.html', text: 'Connect with quality, engineering and AI leaders shaping what comes next.', icon: '<path d="M8 38 24 8l16 30z" fill="#F4EAE4"/><circle cx="24" cy="8" r="3.5" fill="#F6B7A3" stroke="#E5482D"/>' },
+  partners: { label: 'Partners', href: 'partners.html', text: 'Reach the quality community through events, content and co-created programmes.', icon: '<circle cx="18" cy="24" r="10" fill="#F6B7A3"/><circle cx="30" cy="24" r="10" fill="#E9DAD1" fill-opacity=".85"/>' },
+  teams: { label: 'Teams', href: 'corporate-training.html', text: 'Build practical, AI-first capability across your technology organisation.', icon: '<rect x="8" y="12" width="32" height="26" fill="#F4EAE4"/><path d="M8 20h32M17 12V8h14v4" fill="none" stroke="#E5482D"/>' }
+};
+
+class TribeJourneys extends HTMLElement {
+  connectedCallback() {
+    const current = this.getAttribute('current');
+    const items = Object.values(tribeJourneys).filter(item => item.label.toLowerCase() !== current);
+    this.innerHTML = `<div class="cards journey-cards">${items.map(item => `<article class="card"><div class="icon-box"><svg class="gateway-mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><g stroke="#3B2520" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${item.icon}</g></svg></div><h3>${item.label}</h3><p>${item.text}</p><a class="card-link" href="${item.href}">Explore ${item.label.toLowerCase()} →</a></article>`).join('')}</div>`;
+  }
+}
+customElements.define('tribe-journeys', TribeJourneys);

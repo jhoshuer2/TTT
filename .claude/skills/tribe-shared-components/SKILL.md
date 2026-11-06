@@ -39,8 +39,9 @@ Never hand-write the nav, drawer or footer. They live in `site-components.js`.
 
 | Element | Use |
 |---|---|
-| `<tribe-site-nav>` | Global nav, floating on scroll, mobile drawer. Add `home` on the homepage. |
-| `<tribe-site-footer>` | Newsletter, link columns, wordmark, policies. |
+| `<tribe-site-nav>` | Global nav, floating on scroll, mobile drawer. Add `home` on the homepage, `variant="teams"` on the Teams page (anchor links plus a discovery-call CTA). |
+| `<tribe-site-footer>` | Newsletter, link columns, wordmark, policies. `variant="teams"` swaps in team newsletter copy and quick links. |
+| `<tribe-journeys current="teams">` | Cards linking to the other audience journeys, leaving out the current one. |
 | `<tribe-community-stats>` | 180,000+ members / 130+ countries / 43 chapters / 1,200+ events. |
 | `<tribe-page-faq page="teams">` | FAQ accordion. Content comes from `pageFaqContent[page]`. |
 | `<tribe-upcoming-events limit="3" compact>` | Event cards. |
@@ -60,9 +61,9 @@ Never hand-write the nav, drawer or footer. They live in `site-components.js`.
 - **Buttons:** `.btn` with `.btn-primary` (orange), `.btn-outline` or `.btn-light`.
   Primary CTA first, secondary second, in `.hero-actions`. External links use
   `↗` and `target="_blank" rel="noopener noreferrer"`.
-- **Forms:** reuse `.partner-request`, `.partner-form`, `.partner-field`,
-  `.partner-field-wide` and `.partner-form-submit` from `partners.html`. If a
-  second page needs them, add a neutral alias class rather than a second form style.
+- **Forms:** use `.form-panel` > `.form-grid` > `.form-field` (`.form-field-wide`),
+  `.form-submit` and `.form-fallback`. `partners.html` and `corporate-training.html`
+  both use them. New forms reuse these classes, not a new style.
 - **Illustrations:** isometric blocks on a warm 24px grid with one accent,
   using the `.gateway-illustration` and `.illo` animation classes (`flow`, `pulse`,
   `bob`, `ghost`). Copy the SVG pattern from `testers.html` and give clipPath IDs
@@ -83,9 +84,10 @@ Never hand-write the nav, drawer or footer. They live in `site-components.js`.
 4. **Copy lives with its component.** FAQ answers go in `pageFaqContent`.
    Nav links go in `TribeSiteNav`. Footer links go in `TribeSiteFooter`.
    Never duplicate them in page HTML.
-5. **Per-page differences go through attributes**, not forks. For example,
-   `<tribe-site-nav variant="teams">` should switch the link set.
-   `<tribe-site-footer>` should take an attribute for page-specific quick links.
+5. **Per-page differences go through attributes**, not forks. Examples:
+   `<tribe-site-nav variant="teams">` switches the link set and CTA, and
+   `<tribe-site-footer variant="teams">` switches the newsletter copy and links.
+   Add a new variant in the component when another page needs one.
 6. **Responsive by default.** Check 1280, 900 and 390px. Grids collapse at 900px
    and 680px as in `site-pages.css`. Hero buttons stack full-width on mobile.
 7. **Accessibility.** Keep the `:focus-visible` ring and give every section an

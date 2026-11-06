@@ -70,9 +70,6 @@ tribe-chapter-card{min-width:0}
 .teams-stats span{display:block;margin-top:8px;color:var(--page-muted);font-size:14px}
 .teams-clients{padding-top:25px;border-top:1px solid var(--page-line);text-align:center}
 .teams-clients>.eyebrow{margin-bottom:18px}
-.teams-logo-track{display:flex;align-items:center;justify-content:space-between;gap:36px;overflow-x:auto;padding:10px 4px 16px;scroll-snap-type:x mandatory;scrollbar-color:#D8CEC8 transparent;scrollbar-width:thin}
-.teams-logo-track img{width:auto;height:auto;max-width:132px;max-height:42px;flex:0 0 auto;object-fit:contain;filter:grayscale(1);opacity:.62;scroll-snap-align:center}
-.teams-logo-track img:hover{opacity:.9}
 .teams-topics{justify-content:center;margin-top:22px}
 .teams-programme-note{margin:14px auto 0;max-width:66ch;font-size:14px!important}
 .teams-outcome h3{font-size:clamp(38px,5vw,60px);letter-spacing:-.055em}
@@ -85,5 +82,10 @@ tribe-chapter-card{min-width:0}
 .teams-story .card-link{margin-top:auto}
 .teams-continuous>.pills{align-content:center;justify-content:flex-start}
 .teams-continuous .btn{margin-top:8px}
-@media(max-width:900px){.teams-logo-track{justify-content:flex-start}.teams-testimonials{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:680px){.teams-stats{grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:32px}.teams-stats>div{padding:8px 6px}.teams-stats span{font-size:12px}.teams-logo-track{gap:28px}.teams-logo-track img{max-width:108px;max-height:34px}.teams-testimonials{grid-template-columns:1fr}}
+@media(max-width:900px){.teams-testimonials{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){.teams-stats{grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:32px}.teams-stats>div{padding:8px 6px}.teams-stats span{font-size:12px}.teams-testimonials{grid-template-columns:1fr}}
+.teams-client-marquee{margin:0 -8px}
+.teams-client-marquee .trusted-track{animation-duration:48s}
+.teams-client-marquee .trusted-logo{flex-basis:140px}
+.teams-client-marquee .trusted-logo img{max-width:140px;max-height:38px}
+@media(prefers-reduced-motion:reduce){.teams-client-marquee{overflow-x:auto}}

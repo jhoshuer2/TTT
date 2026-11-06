@@ -51,3 +51,12 @@ tribe-chapter-card{min-width:0}
 
 .faq details p a{color:var(--page-accent);text-decoration:underline;text-underline-offset:3px}
 .section-dark .faq details p a{color:#F6B7A3}
+
+.leader-community-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.leader-finer-card{max-width:780px;margin:0 auto;padding:36px}
+.leader-finer-card h3{font-size:clamp(24px,3vw,32px);margin:12px 0}
+.leader-finer-card p{max-width:66ch;color:var(--page-muted)}
+.leader-pair-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+.leader-contribution-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:900px){.leader-community-grid,.leader-contribution-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){.leader-community-grid,.leader-contribution-grid,.leader-pair-cards{grid-template-columns:1fr}.leader-finer-card{padding:26px}}

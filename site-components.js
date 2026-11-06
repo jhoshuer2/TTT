@@ -46,10 +46,11 @@ const pageFaqContent = {
     ['How can I contribute?', 'You can speak, write, volunteer, mentor or help bring a local chapter together.']
   ],
   leaders: [
-    ['Who is the leadership community for?', 'Quality leaders, QA heads, engineering leaders and senior practitioners shaping quality in their organisations.'],
-    ['How do I join?', 'Start with the community invitation and membership path. Some leadership experiences have their own invitations or registration.'],
-    ['Can I contribute as a speaker or mentor?', 'Yes. Experienced leaders can contribute through talks, mentoring, advisory conversations and community sessions.'],
-    ['Where can I find the next QonfX?', 'Browse the events page for upcoming dates and formats.']
+    ['Who is the leadership community for?', 'Quality, engineering, product and AI leaders, including QA heads, directors, VPs, CTOs and senior practitioners shaping quality in their organisations.'],
+    ['How do I join the leadership community?', 'Use The Test Tribe community page to find the current way to join and get involved. <a href="https://www.thetesttribe.com/community/">Explore the community ↗</a>'],
+    ['How do QonfX invitations work?', 'QonfX is an invite-only leadership conference. Each city page has the current event date, audience information and invite request details. <a href="https://www.thetesttribe.com/qonfx/">Browse QonfX editions ↗</a>'],
+    ['Is Finer Circle the same as the leadership community?', 'No. Finer Circle is a separate membership for testing professionals, with structured learning, courses, masterclasses, mentoring and peer community. Review its current details before enrolling. <a href="https://www.thetesttribe.com/finer-circle/">Explore Finer Circle ↗</a>'],
+    ['Can I contribute as a mentor, speaker or advisor?', 'Yes. Use the community page to get involved and share how you would like to contribute. <a href="https://www.thetesttribe.com/community/">Get involved ↗</a>']
   ],
   partners: [
     ['Who can explore a partnership?', 'Software testing and QA tools, SaaS companies, technology brands, service providers and other organisations with something relevant to the quality community.'],
@@ -86,7 +87,7 @@ class TribeChapterCard extends HTMLElement {
     const compact = this.hasAttribute('compact');
     const card = document.createElement('article');
     card.className = 'card chapter-card';
-    card.innerHTML = `<div class="icon-box" aria-hidden="true"><svg class="gateway-mark" viewBox="0 0 48 48"><g fill="none" stroke="#3B2520" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="11" r="5" fill="#F6B7A3"/><circle cx="11" cy="32" r="4" fill="#E9DAD1"/><circle cx="37" cy="32" r="4" fill="#E9DAD1"/><path d="M14 29 21 16m13 13-7-13M15 34h18" stroke="#E5482D"/></g></svg></div><h3>${compact ? 'Local chapters' : 'Find a local chapter'}</h3><p>Meet testers nearby through in-person and virtual meetups, and find the next gathering in your city.</p><a class="card-link" href="https://www.thetesttribe.com/meetups/">Explore local meetups ↗</a>`;
+    card.innerHTML = `<div class="icon-box" aria-hidden="true"><svg class="gateway-mark" viewBox="0 0 48 48"><g fill="none" stroke="#3B2520" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="11" r="5" fill="#F6B7A3"/><circle cx="11" cy="32" r="4" fill="#E9DAD1"/><circle cx="37" cy="32" r="4" fill="#E9DAD1"/><path d="M14 29 21 16m13 13-7-13M15 34h18" stroke="#E5482D"/></g></svg></div><h3>${compact ? 'Local chapters' : 'Find a local chapter'}</h3><p>Meet quality professionals nearby through local meetups, and find the next gathering in your city.</p><a class="card-link" href="https://www.thetesttribe.com/meetups/">Explore local meetups ↗</a>`;
     this.replaceChildren(card);
   }
 }

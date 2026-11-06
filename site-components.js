@@ -36,6 +36,81 @@ class TribeCommunityStats extends HTMLElement {
 }
 customElements.define('tribe-community-stats', TribeCommunityStats);
 
+const pageFaqContent = {
+  testers: [
+    ['Who can join The Test Tribe?', 'Testers, QA professionals, automation engineers, SDETs and people moving into software testing are welcome.'],
+    ['What can I access as a community member?', 'Explore community events, local chapters and ways to contribute. Courses and some structured programmes have their own enrolment details.'],
+    ['What is the difference between the community and Finer Circle?', 'The wider community and its events are separate from Finer Circle, a paid membership with structured learning, mentorship and peer support. <a href="https://www.thetesttribe.com/finer-circle/">Review current Finer Circle details ↗</a>'],
+    ['Where can I find courses and live workshops?', 'Browse self-paced courses and current live learning options on The Test Tribe’s learning sites. <a href="https://www.thetesttribe.com/thrive-edschool/">Explore courses ↗</a> <a href="https://www.thetesttribe.com/finer-circle/">Explore Finer Circle ↗</a>'],
+    ['How do I find events near me?', 'Browse the current events calendar for upcoming online and in-person experiences. <a href="https://www.thetesttribe.com/events/">See upcoming events ↗</a>'],
+    ['How can I contribute?', 'You can speak, write, volunteer, mentor or help bring a local chapter together.']
+  ],
+  leaders: [
+    ['Who is the leadership community for?', 'Quality leaders, QA heads, engineering leaders and senior practitioners shaping quality in their organisations.'],
+    ['How do I join?', 'Start with the community invitation and membership path. Some leadership experiences have their own invitations or registration.'],
+    ['Can I contribute as a speaker or mentor?', 'Yes. Experienced leaders can contribute through talks, mentoring, advisory conversations and community sessions.'],
+    ['Where can I find the next QonfX?', 'Browse the events page for upcoming dates and formats.']
+  ],
+  partners: [
+    ['Who can explore a partnership?', 'Software testing and QA tools, SaaS companies, technology brands, service providers and other organisations with something relevant to the quality community.'],
+    ['What information is in the partnership deck?', 'It’s the best place to get current audience details, event dates, available partnership formats, newsletter specifications and next steps.'],
+    ['Can we shape a custom programme?', 'Yes. Tell us what you want to share and who you hope to reach. We’ll explore a format that fits the community and your goals.'],
+    ['How soon should we get in touch?', 'For conferences and co-branded programmes, earlier is better so there is time to plan the audience, format and approvals together.'],
+    ['Can we use The Test Tribe’s logo or co-brand an event?', 'Logo use and co-branded materials need review and approval. We’ll share the right guidelines as part of the planning conversation.']
+  ],
+  events: [
+    ['Are events online or in person?', 'Both. Each listing identifies the city or online format.'],
+    ['Who can attend?', 'Events are designed for testers, quality professionals and people building technology. Some signature or leadership events may have specific registration details.'],
+    ['Can I host or speak at an event?', 'Yes. The community welcomes speakers, hosts and event collaborators.'],
+    ['Where can I find recordings and photographs?', 'Explore the community gallery and event recaps for available highlights.']
+  ],
+  teams: [
+    ['Can the programme be customised for our team?', 'Yes. A discovery conversation helps clarify your goals, audience, delivery format and relevant programme options.'],
+    ['What delivery formats are available?', 'Training can be delivered on-site, live online, in a hybrid format or as a customised programme.'],
+    ['Who are the programmes for?', 'Technology teams across QA, engineering, product, data, support and leadership.'],
+    ['Can our team continue learning after training?', 'Explore Finer Circle for Business as an ongoing learning, mentoring and community option.']
+  ]
+};
+
+class TribePageFaq extends HTMLElement {
+  connectedCallback() {
+    const key = this.getAttribute('page') || 'testers';
+    const questions = pageFaqContent[key] || pageFaqContent.testers;
+    this.innerHTML = `<div class="faq">${questions.map(([question, answer]) => `<details><summary>${question}</summary><p>${answer}</p></details>`).join('')}</div>`;
+  }
+}
+customElements.define('tribe-page-faq', TribePageFaq);
+
+class TribeChapterCard extends HTMLElement {
+  connectedCallback() {
+    const compact = this.hasAttribute('compact');
+    const card = document.createElement('article');
+    card.className = 'card chapter-card';
+    card.innerHTML = `<div class="icon-box" aria-hidden="true"><svg class="gateway-mark" viewBox="0 0 48 48"><g fill="none" stroke="#3B2520" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="11" r="5" fill="#F6B7A3"/><circle cx="11" cy="32" r="4" fill="#E9DAD1"/><circle cx="37" cy="32" r="4" fill="#E9DAD1"/><path d="M14 29 21 16m13 13-7-13M15 34h18" stroke="#E5482D"/></g></svg></div><h3>${compact ? 'Local chapters' : 'Find a local chapter'}</h3><p>Meet testers nearby through in-person and virtual meetups, and find the next gathering in your city.</p><a class="card-link" href="https://www.thetesttribe.com/meetups/">Explore local meetups ↗</a>`;
+    this.replaceChildren(card);
+  }
+}
+customElements.define('tribe-chapter-card', TribeChapterCard);
+
+const upcomingCommunityEvents = [
+  { type: 'in-person', category: 'Community event', date: '22 Nov 2026', title: 'Testing AI features in production', summary: 'Join testers and quality practitioners in Pune to discuss the realities of testing AI in production.', place: 'Pune', format: 'In person' },
+  { type: 'online', category: 'Online event', date: '29 Nov 2026', title: 'Contract testing for microservices', summary: 'Explore practical approaches to contract testing for services and distributed systems.', place: 'Online', format: 'Online' },
+  { type: 'in-person', category: 'Community event', date: '4 Dec 2026', title: 'Measuring quality beyond bug counts', summary: 'Join the conversation in Bengaluru about meaningful signals for product and software quality.', place: 'Bengaluru', format: 'In person' },
+  { type: 'in-person', category: 'Community event', date: '6 Dec 2026', title: 'Building a QA career in Africa’s tech scene', summary: 'Connect with testers and technology professionals in Lagos and share career perspectives.', place: 'Lagos', format: 'In person' },
+  { type: 'in-person', category: 'Signature conference', date: '18–19 Feb 2027', title: 'TribeQonf 2027', summary: 'Two days of talks, workshops and hallway conversations with the people shaping software quality.', place: 'Bengaluru', format: 'In person' }
+];
+
+class TribeUpcomingEvents extends HTMLElement {
+  connectedCallback() {
+    const limit = Number(this.getAttribute('limit')) || upcomingCommunityEvents.length;
+    const compact = this.hasAttribute('compact');
+    const events = upcomingCommunityEvents.slice(0, limit);
+    const filters = compact ? '' : `<div class="filters" role="group" aria-label="Filter events"><button class="filter" data-filter="all" aria-pressed="true">All events</button><button class="filter" data-filter="online" aria-pressed="false">Online</button><button class="filter" data-filter="in-person" aria-pressed="false">In person</button></div>`;
+    this.innerHTML = `${filters}<div class="event-grid ${compact ? 'event-grid-compact' : ''}">${events.map(event => `<article class="event-card" data-event="${event.type}"><div class="event-meta"><span>${event.category}</span><span aria-hidden="true">·</span><span>${event.date}</span></div><h3>${event.title}</h3><p>${event.summary}</p><div class="pills"><span class="pill">${event.place}</span><span class="pill">${event.format}</span></div><a class="card-link" href="events.html#calendar">Event details →</a></article>`).join('')}</div>`;
+  }
+}
+customElements.define('tribe-upcoming-events', TribeUpcomingEvents);
+
 class TribeSiteFooter extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `

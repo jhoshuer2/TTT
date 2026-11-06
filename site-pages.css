@@ -38,3 +38,16 @@
 .partner-conference-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
 @media(max-width:680px){.partner-conference-cards{grid-template-columns:1fr}.hero-actions{display:grid;grid-template-columns:1fr;width:100%;max-width:340px;margin:30px auto 0}.hero-actions .btn{width:100%;font-weight:700}}
 
+
+/* Shared page blocks */
+tribe-page-faq,tribe-chapter-card,tribe-upcoming-events{display:block}
+tribe-chapter-card{min-width:0}
+.chapter-card{height:100%}
+.event-grid-compact{grid-template-columns:repeat(3,minmax(0,1fr))}
+.event-grid-compact .event-card{min-height:280px}
+.section-more{text-align:center;margin-top:16px}
+.section-more .card-link{margin-top:8px}
+@media(max-width:900px){.event-grid-compact{grid-template-columns:1fr}}
+
+.faq details p a{color:var(--page-accent);text-decoration:underline;text-underline-offset:3px}
+.section-dark .faq details p a{color:#F6B7A3}

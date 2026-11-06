@@ -137,3 +137,7 @@ tribe-report-cover{display:block;position:relative;min-width:0;aspect-ratio:.94;
 .nav.sc .links{gap:20px}
 .ftop-teams{grid-template-columns:1.5fr repeat(3,1fr)}
 @media(max-width:900px){.ftop-teams{grid-template-columns:1fr 1fr}}
+
+/* Three-stat variant keeps the homepage alignment: left, centre, right */
+tribe-community-stats[variant="teams"] .stats{grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){tribe-community-stats[variant="teams"] .stats{grid-template-columns:repeat(3,1fr);gap:12px}tribe-community-stats[variant="teams"] .stats div:nth-child(n){text-align:center;padding-top:0}tribe-community-stats[variant="teams"] .stats div:first-child{text-align:left}tribe-community-stats[variant="teams"] .stats div:last-child{text-align:right}}

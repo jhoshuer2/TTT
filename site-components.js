@@ -66,10 +66,13 @@ const pageFaqContent = {
     ['Where can I find recordings and photographs?', 'Explore the community gallery and event recaps for available highlights.']
   ],
   teams: [
-    ['Can the programme be customised for our team?', 'Yes. A discovery conversation helps clarify your goals, audience, delivery format and relevant programme options.'],
-    ['What delivery formats are available?', 'Training can be delivered on-site, live online, in a hybrid format or as a customised programme.'],
-    ['Who are the programmes for?', 'Technology teams across QA, engineering, product, data, support and leadership.'],
-    ['Can our team continue learning after training?', 'Explore Finer Circle for Business as an ongoing learning, mentoring and community option.']
+    ['Can the programme be customised for our team?', 'Yes. Programmes can be mapped to your roles, tools, tech stack, current skill level and business goals. Start with a discovery conversation to scope the right path.'],
+    ['What delivery formats are available?', 'Choose classroom training at your office or a venue, interactive live online sessions, or an onsite trainer for a customised experience. Hybrid delivery can be discussed during scoping.'],
+    ['What topics can you cover?', 'The portfolio includes AI, testing and automation, programming, DevOps and cloud, and leadership and agile. The team can help match the content to your capability goals.'],
+    ['Can we review trainer profiles before booking?', 'Yes. The Test Tribe shares relevant practitioner profiles once the programme scope is understood, so you can assess the experience that fits your team.'],
+    ['How do we understand whether training worked?', 'Agree learning outcomes during scoping. Depending on the programme, teams can use pre- and post-training assessments and track how the skills are applied at work.'],
+    ['Can our team continue learning after training?', 'Finer Circle for Business offers ongoing courses, AI and professional development masterclasses, mentoring and a learning community. <a href="https://www.thetesttribe.com/finer-circle-for-business/">Explore Finer Circle for Business ↗</a>'],
+    ['How do we get a proposal?', 'Book a discovery call with your team size, focus area and goals. The Test Tribe will help shape the curriculum, trainer fit and delivery plan. <a href="https://www.thetesttribe.com/corporate-training/#contact-form">Start a corporate training enquiry ↗</a>']
   ]
 };
 

@@ -60,3 +60,30 @@ tribe-chapter-card{min-width:0}
 .leader-contribution-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
 @media(max-width:900px){.leader-community-grid,.leader-contribution-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:680px){.leader-community-grid,.leader-contribution-grid,.leader-pair-cards{grid-template-columns:1fr}.leader-finer-card{padding:26px}}
+
+/* Corporate training proof and portfolio details */
+.teams-proof{padding-top:44px;padding-bottom:54px;background:#fff}
+.teams-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));max-width:860px;margin:0 auto 42px;text-align:center}
+.teams-stats>div{padding:8px 20px;border-right:1px solid var(--page-line)}
+.teams-stats>div:last-child{border-right:0}
+.teams-stats b{display:block;font-size:clamp(28px,3.2vw,42px);line-height:1.05;letter-spacing:-.045em}
+.teams-stats span{display:block;margin-top:8px;color:var(--page-muted);font-size:14px}
+.teams-clients{padding-top:25px;border-top:1px solid var(--page-line);text-align:center}
+.teams-clients>.eyebrow{margin-bottom:18px}
+.teams-logo-track{display:flex;align-items:center;justify-content:space-between;gap:36px;overflow-x:auto;padding:10px 4px 16px;scroll-snap-type:x mandatory;scrollbar-color:#D8CEC8 transparent;scrollbar-width:thin}
+.teams-logo-track img{width:auto;height:auto;max-width:132px;max-height:42px;flex:0 0 auto;object-fit:contain;filter:grayscale(1);opacity:.62;scroll-snap-align:center}
+.teams-logo-track img:hover{opacity:.9}
+.teams-topics{justify-content:center;margin-top:22px}
+.teams-programme-note{margin:14px auto 0;max-width:66ch;font-size:14px!important}
+.teams-outcome h3{font-size:clamp(38px,5vw,60px);letter-spacing:-.055em}
+.teams-outcome h3 span{color:#F6B7A3}
+.teams-testimonials{grid-template-columns:repeat(3,minmax(0,1fr))}
+.teams-story{display:flex;min-height:205px;flex-direction:column;align-items:flex-start;transition:transform .2s,border-color .2s}
+.teams-story:hover{transform:translateY(-3px);border-color:#D0BDB2}
+.teams-story h3{margin:18px 0 8px}
+.teams-story p{margin-bottom:20px}
+.teams-story .card-link{margin-top:auto}
+.teams-continuous>.pills{align-content:center;justify-content:flex-start}
+.teams-continuous .btn{margin-top:8px}
+@media(max-width:900px){.teams-logo-track{justify-content:flex-start}.teams-testimonials{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){.teams-stats{grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:32px}.teams-stats>div{padding:8px 6px}.teams-stats span{font-size:12px}.teams-logo-track{gap:28px}.teams-logo-track img{max-width:108px;max-height:34px}.teams-testimonials{grid-template-columns:1fr}}
